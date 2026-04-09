@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>THE TRUTH | BUATAN FARIL!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .blob {
+            position: fixed; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            z-index: -1; filter: blur(60px);
+        }
+
+        header { max-width: 1000px; margin: 0 auto 50px auto; }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; line-height: 1; color: #fff; }
+        .tagline { color: #555; margin-top: 10px; font-weight: 300; letter-spacing: 2px; }
+
+        /* BENTO GRID */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 160px;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .item {
+            background: linear-gradient(145deg, #0f0f12, #050505);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 25px;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item i {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            transition: 0.4s;
+        }
+
+        .item:hover {
+            background: #111;
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .item:hover i {
+            color: #fff;
+            transform: scale(1.1) rotate(-10deg);
+        }
+
+        .item h3 { font-size: 1rem; font-weight: 600; color: #888; transition: 0.3s; }
+        .item:hover h3 { color: #fff; }
+
+        /* SPANNING */
+        .wide { grid-column: span 2; }
+        .tall { grid-row: span 2; }
+
+        /* MODAL REVEAL */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: none;
+            justify-content: center; align-items: center; z-index: 100;
+            padding: 40px;
+        }
+
+        .content-wrap { max-width: 650px; text-align: center; }
+        .label { color: #444; font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; margin-bottom: 25px; display: block; }
+        #text-display { font-size: 2rem; font-weight: 500; line-height: 1.4; color: #fff; }
+        
+        .close-trigger {
+            margin-top: 60px; background: none; border: none; color: #666;
+            font-family: inherit; font-size: 0.8rem; cursor: pointer;
+            padding-bottom: 5px; border-bottom: 1px solid #333;
+            transition: 0.3s;
+        }
+        .close-trigger:hover { color: #fff; border-color: #fff; }
+
+        @media (max-width: 768px) {
+            .bento-container { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob" style="top: 10%; right: 10%;"></div>
+    <div class="blob" style="bottom: 10%; left: 5%;"></div>
+
+    <header>
+        <h1>THE<br>TRUTH.</h1>
+        <p class="tagline">MADE BY FARIL USING A SIMPLE HTML/CSS/JS</p>
+    </header>
+
+    <div class="bento-container">
+        <div class="item wide" onclick="reveal('ego')">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Ego & Kedewasaan</h3>
+        </div>
+        
+        <div class="item tall" onclick="reveal('circle')">
+            <i class="fa-solid fa-users-slash"></i>
+            <h3>Toxic Circle</h3>
+        </div>
+
+        <div class="item" onclick="reveal('money')">
+            <i class="fa-solid fa-credit-card"></i>
+            <h3>Gaya Hidup</h3>
+        </div>
+
+        <div class="item" onclick="reveal('love')">
+            <i class="fa-solid fa-heart-crack"></i>
+            <h3>Asmara</h3>
+        </div>
+
+        <div class="item wide" onclick="reveal('smart')">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>Si Paling Pintar</h3>
+        </div>
+
+        <div class="item" onclick="reveal('effort')">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Kerja Keras</h3>
+        </div>
+
+        <div class="item wide" onclick="reveal('fake')">
+            <i class="fa-solid fa-masks-theater"></i>
+            <h3>Panggung Sandiwara</h3>
+        </div>
+
+        <div class="item tall" onclick="reveal('loyalty')">
+            <i class="fa-solid fa-handshake-simple-slash"></i>
+            <h3>Loyalitas</h3>
+        </div>
+
+        <div class="item" onclick="reveal('habit')">
+            <i class="fa-solid fa-rotate-right"></i>
+            <h3>Kebiasaan</h3>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div class="content-wrap">
+            <span class="label">— LOGIC OVER EMOTION —</span>
+            <div id="text-display"></div>
+            <button class="close-trigger" onclick="hide()">KEMBALI KE REALITA</button>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            ego: "Menjadi dewasa bukan tentang siapa yang paling lama hidup, tapi tentang siapa yang paling cepat sadar bahwa dunia tidak berputar hanya di sekitar dirinya saja.",
+            circle: "Jangan bangga punya banyak teman kalau mereka hanya ada untuk tertawa. Ingat, lalat lebih suka berkumpul di tempat yang kotor daripada di tempat yang bernilai.",
+            money: "Gayamu sudah setinggi langit, tapi cicilanmu masih membumi. Berhenti menyiksa dompet hanya demi validasi dari orang yang bahkan tidak peduli padamu.",
+            love: "Jika kamu terus mengejar orang yang tidak menghargaimu, jangan salahkan dia kalau kamu terluka. Salahkan dirimu karena lupa caranya menghargai diri sendiri.",
+            smart: "Tong kosong memang nyaring bunyinya. Semakin keras seseorang membanggakan kecerdasannya, biasanya semakin sedikit isi yang sebenarnya dia miliki.",
+            effort: "Mimpi besar tanpa aksi itu namanya halusinasi. Berhenti mengeluh tentang hasil yang tidak kamu dapatkan dari kerja keras yang tidak kamu lakukan.",
+            fake: "Lucu melihat orang yang sibuk membangun citra di sosial media, sampai lupa membangun karakter asli di dunia nyata.",
+            loyalty: "Loyalitas itu mahal. Jangan mengharapkannya dari orang murahan yang hanya datang padamu saat butuh bantuan.",
+            habit: "Kamu adalah apa yang kamu lakukan berulang kali. Jadi, kalau hobi mengeluh, jangan kaget kalau hidupmu hanya jalan di tempat."
+        };
+
+        function reveal(key) {
+            const overlay = document.getElementById('overlay');
+            const display = document.getElementById('text-display');
+            display.innerText = data[key];
+            overlay.style.display = 'flex';
+            gsap.from("#text-display", { opacity: 0, scale: 0.9, duration: 0.6, ease: "back.out(1.7)" });
+        }
+
+        function hide() {
+            gsap.to("#overlay", { opacity: 0, duration: 0.3, onComplete: () => {
+                const overlay = document.getElementById('overlay');
+                overlay.style.display = 'none';
+                overlay.style.opacity = 1;
+            }});
+        }
+    </script>
+</body>
+</html>
