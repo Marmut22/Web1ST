@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANYA CONTOH!!! | WEB PERUSAHAAN</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #a1a1a1;
+            --bg: #0a0a0a;
+            --accent: #2563eb;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at center, #111 0%, #0a0a0a 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--secondary);
+            max-width: 600px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.4s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* --- About Section --- */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- CEO Section --- */
+        .ceo-section {
+            background: #0e0e0e;
+        }
+
+        .ceo-profile {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .ceo-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #222, #444);
+            object-fit: cover;
+        }
+
+        .ceo-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .ceo-info span {
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer & Socials --- */
+        footer {
+            padding: 50px 10%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-container { grid-template-columns: 1fr; }
+            .ceo-profile { justify-content: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <div class="logo">Paril.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#ceo">Kepemimpinan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <h1>Web Developer by Paril.</h1>
+        <p>Ini adalah iklan untuk web developer dan designer web.</p>
+        <a href="#about" class="btn">Scroll Down</a>
+    </section>
+
+    <!-- Tentang Perusahaan -->
+    <section id="about">
+        <h2 class="section-title">Tentang Perusahaan</h2>
+        <div class="about-container">
+            <div class="glass-card">
+                <h3>Visi Kami</h3>
+                <p>Menjadi pionir dalam integrasi teknologi digital yang menyederhanakan kehidupan manusia tanpa mengurangi estetika dan nilai fungsional.</p>
+            </div>
+            <div class="glass-card">
+                <h3>Misi Kami</h3>
+                <p>Memberikan layanan konsultasi IT dan pengembangan infrastruktur digital kelas dunia dengan standar privasi dan keamanan tertinggi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Profile -->
+    <section id="ceo" class="ceo-section">
+        <h2 class="section-title">Pemimpin Kami</h2>
+        <div class="ceo-profile">
+            <!-- Gambar placeholder untuk CEO -->
+            <div class="ceo-image" style="background-image: url('data:image/jpeg;base64,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'); background-size: cover; background-position: center;"></div>
+            <div class="ceo-info">
+                <h3>Bapa paril pas masi muda</h3>
+                <span>Founder & Chief Executive Officer</span>
+                <p style="max-width: 600px; color: var(--secondary);">
+                    "Di Pawsa Company, kami tidak hanya menjual produk; kami membangun ekosistem. Fokus kami adalah menciptakan teknologi yang terasa manusiawi, intuitif, dan berdampak nyata bagi efisiensi bisnis global."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Social -->
+    <footer id="contact">
+        <h3>Mari Berkolaborasi.</h3>
+        <p style="color: var(--secondary);">Hubungi kami melalui saluran resmi di bawah ini.</p>
+        
+        <div class="social-links">
+            <!-- Link Social Media (Ganti '#' dengan link asli jika ada) -->
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/628123456789" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <div class="copyright">
+            &copy; BELUM BISA DI AKSES KARNA INI HANYA CONTOH. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawsa Company | Elevating Future</title>
+    
+    <!-- Google Fonts: Urbanist for Modern Tech Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS (Animate on Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #050505;
+            --accent-glow: #deff9a;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Urbanist', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-glow); }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent-glow); }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent-glow);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--text-main); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at center, #111827 0%, #050505 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff 40%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            max-width: 700px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-main {
+            padding: 18px 45px;
+            background: var(--accent-glow);
+            color: #000;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(222, 255, 154, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(222, 255, 154, 0.5);
+        }
+
+        /* --- Sections --- */
+        section { padding: 120px 10%; }
+
+        .section-tag {
+            color: var(--accent-glow);
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+
+        /* --- Cards & Interaction --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            padding: 50px;
+            border-radius: 30px;
+            transition: 0.5s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent-glow);
+            transform: translateY(-15px);
+        }
+
+        .glass-card:hover::before { left: 100%; }
+
+        .glass-card i {
+            font-size: 2.5rem;
+            color: var(--accent-glow);
+            margin-bottom: 25px;
+        }
+
+        /* --- CEO Section --- */
+        .ceo-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .ceo-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 2px solid var(--accent-glow);
+        }
+
+        .ceo-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: 1s;
+        }
+
+        .ceo-img-box:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .ceo-quote {
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.4;
+            color: #fff;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 10%;
+            background: #000;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .social-icons a {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-glow);
+            color: #000;
+            transform: translateY(-10px) rotate(360deg);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 968px) {
+            .ceo-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav data-aos="fade-down">
+        <a href="#" class="logo">PARIL WEB DEV<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">Visi</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#ceo">CEO</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <span class="section-tag" data-aos="fade-up">Elite Technology Partner</span>
+        <h1 data-aos="fade-up" data-aos-delay="200">The Future is <span>Pawsa.</span></h1>
+        <p data-aos="fade-up" data-aos-delay="400">Transformasi digital bukan lagi pilihan, melainkan keharusan. Kami hadir untuk memimpin revolusi bisnis Anda dengan presisi global.</p>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <a href="#about" class="btn-main">Mulai Eksplorasi</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <span class="section-tag" data-aos="fade-right">Core Values</span>
+        <h2 class="section-title" data-aos="fade-right" data-aos-delay="200">Membangun Dengan Integritas</h2>
+        <div class="grid-container">
+            <div class="glass-card" data-aos="zoom-in-up" data-aos-delay="100">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <h3>Inovasi Radikal</h3>
+                <p>Kami tidak mengikuti standar industri, kami menciptakan standar baru melalui riset AI dan Machine Learning.</p>
+            </div>
+            <div class="glass-card" data-aos="zoom-in-up" data-aos-delay="300">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Keamanan Mutlak</h3>
+                <p>Infrastruktur data yang dirancang dengan enkripsi tingkat militer untuk menjaga aset digital Anda tetap aman.</p>
+            </div>
+            <div class="glass-card" data-aos="zoom-in-up" data-aos-delay="500">
+                <i class="fa-solid fa-globe"></i>
+                <h3>Konektivitas Global</h3>
+                <p>Jaringan kantor di 4 benua siap mendukung ekspansi bisnis internasional Anda tanpa hambatan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Spotlight -->
+    <section id="ceo" style="background: #080808;">
+        <div class="ceo-wrapper">
+            <div class="ceo-img-box" data-aos="fade-right">
+                <!-- Foto Pak Jokowi sebagai CEO Alexander Jokowi Pawsa -->
+                <img src="data:image/jpeg;base64,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" alt="CEO Pawsa Company">
+            </div>
+            <div class="ceo-content" data-aos="fade-left">
+                <span class="section-tag">Executive Leader</span>
+                <h2 style="font-size: 3.5rem; margin-bottom: 10px;">PARIL as Pawsa</h2>
+                <p style="color: var(--accent-glow); font-weight: 800; font-size: 1.1rem; margin-bottom: 40px;">FOUNDER & CHIEF EXECUTIVE OFFICER</p>
+                <div class="ceo-quote">
+                    "Teknologi hanyalah alat. Jiwa dari sebuah kemajuan adalah keberanian manusia untuk bermimpi dan bekerja keras mewujudkannya."
+                </div>
+                <p style="font-size: 1.1rem;">Dibawah kepemimpinan Alexander, Pawsa Company telah berkembang dari firma riset kecil menjadi ekosistem teknologi yang bernilai triliunan rupiah, melayani lebih dari 120 negara di seluruh dunia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Socials -->
+    <footer id="contact">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px;" data-aos="fade-up">Siap Menjadi Bagian dari Masa Depan?</h2>
+        <p style="color: var(--text-dim); margin-bottom: 50px;" data-aos="fade-up">Hubungi tim strategis kami melalui saluran di bawah ini.</p>
+        
+        <div class="social-icons" data-aos="zoom-in">
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/628123456789" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #444;" data-aos="fade-in">
+            &copy; INI CUMA CONTOH DAN SEMUA LINK ATAU TAUTAN ADALAH CONTOH
+    </footer>
+
+    <!-- AOS Script for Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS Animation
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 200
+        });
+    </script>
+</body>
+</html>
